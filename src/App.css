@@ -329,7 +329,7 @@ ul li .descr::before {
 
 
   .form-container {
-    height: 100vh;
+    height: 80vh;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -365,4 +365,9 @@ ul li .descr::before {
   background-color: rgb(76, 70, 168);
   border: none;   
   cursor: pointer; 
+}
+
+.form--label {
+  display: flex;
+  
 }

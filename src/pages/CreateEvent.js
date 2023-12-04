@@ -48,8 +48,8 @@ export default function CreateEvent() {
             onChange={handleChange}
           />
         {/* <br /> */}
-        <label>
-          Start Date:
+        <label className="form--label">
+          Start Date
           <input
             type="date"
             name="startDate"
@@ -60,8 +60,8 @@ export default function CreateEvent() {
           />
         </label>
         {/* <br /> */}
-        <label>
-          End Date:
+        <label className="form--label">
+          End Date
           <input
             type="date"
             name="endDate"
