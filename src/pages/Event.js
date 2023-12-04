@@ -1,23 +1,30 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import eventsData from "../data/eventsData.js";
-import DeleteButton from "../components/DeleteButton.js";
 
 export default function Event(){
 
     const { id } = useParams();
     const event = eventsData.data.events[id];
+    const navigate = useNavigate();
 
     if (!event) {
         return <div>Nie znaleziono wydarzenia</div>;
     }
 
 
-    // const handleDelete = () => {
-    //     // Wywołujemy funkcję usuwającą z komponentu nadrzędnego
-    //     onDelete(event.id);
-    //     History.push("/events");
-    //   };
+    const handleDelete = () => {
+      // Tutaj umieść logikę usuwania wydarzenia
+      // W tym przykładzie, usuwamy zdarzenie o określonym indeksie z kopii danych
+      const updatedEvents = [...eventsData.data.events];
+      updatedEvents.splice(id, 1);
+  
+      // Zaktualizuj dane
+      eventsData.data.events = updatedEvents;
+  
+      // Przekieruj do /events po usunięciu
+      navigate('/events');
+    };
 
     return (
         <div>
@@ -35,7 +42,7 @@ export default function Event(){
             <strong>Zdjęcie:</strong>{" "}
             <img src={event.url} alt={event.title} width="100px" height="100px" />
           </div>
-          {/* <DeleteButton key={event.id} event={event} onClick={handleDeleteEvent}/> */}
+          <button onClick={handleDelete}>Usuń</button>
         </div>
       );
     };

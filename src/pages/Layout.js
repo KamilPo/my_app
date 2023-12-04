@@ -20,6 +20,7 @@ export default function Layout() {
                 </div>
                 
                 <div class="nav-links">
+                    <a href="/CreateEvent" target="_blank">Create Event</a>
                     <a href="/Events" target="_blank">Events</a>
                     <a href="/Categories" target="_blank">Categories</a>
                     <a href="/Table" target="_blank">Table</a>

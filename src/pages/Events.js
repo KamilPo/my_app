@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import eventsData from "../data/eventsData.js";
 import { Link } from "react-router-dom";
+// import CreateEvent from "/CreateEvent.js"
 
 export default function Events() {
   const [allEvents, setAllEvents] = useState(eventsData);
