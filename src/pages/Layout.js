@@ -27,7 +27,7 @@ export default function Layout() {
                     <a href="https://jsfiddle.net/user/jo_Geek/" target="_blank">JsFiddle</a> */}
                 </div>
   
-        </div>
+            </div>
 
             <Outlet/>
             <h3>Footer</h3>
