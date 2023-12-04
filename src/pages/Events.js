@@ -8,12 +8,13 @@ export default function Events() {
 
   return (
     <>
-      <h1>Oś czasu</h1>
+      <h1>Timeline</h1>
       <ul>
         {allEvents.data.events.map((event, index) => (
           <li key={index} className={"accentA"}>
-            <Link to={`/Events/${index}`}>
+            <Link className="link" to={`/Events/${index}`}>
             <div className="date">{event.startDate}</div>
+            </Link>
             <div className="title">{event.title}</div>
             <img
               src={event.url}
@@ -23,7 +24,7 @@ export default function Events() {
               height="100px"
             />
             <div className="descr">{event.description}</div>
-            </Link>
+            
             
           </li>
         ))}

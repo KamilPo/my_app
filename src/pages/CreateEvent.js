@@ -36,59 +36,57 @@ export default function CreateEvent() {
   };
 
   return (
-    <div>
-      <h1>Utwórz nowe wydarzenie</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Tytuł:
+    <div className="form-container">
+      <h1>Create new event</h1>
+      <form className="form" onSubmit={handleSubmit}>
           <input
             type="text"
             name="title"
+            placeholder="Title"
+            className="form--input"
             value={newEvent.title}
             onChange={handleChange}
           />
-        </label>
-        <br />
+        {/* <br /> */}
         <label>
-          Data rozpoczęcia:
+          Start Date:
           <input
-            type="text"
+            type="date"
             name="startDate"
+            placeholder="Start Date"
+            className="form--input"
             value={newEvent.startDate}
             onChange={handleChange}
           />
         </label>
-        <br />
+        {/* <br /> */}
         <label>
-          Data zakończenia:
+          End Date:
           <input
-            type="text"
+            type="date"
             name="endDate"
+            placeholder="End Date"
+            className="form--input"
             value={newEvent.endDate}
             onChange={handleChange}
           />
         </label>
-        <br />
-        <label>
-          Opis:
           <textarea
             name="description"
+            placeholder="Description"
+            className="form--input"
             value={newEvent.description}
             onChange={handleChange}
           />
-        </label>
-        <br />
-        <label>
-          URL zdjęcia:
           <input
             type="text"
             name="url"
+            placeholder="url do zdjęcia"
+            className="form--input"
             value={newEvent.url}
             onChange={handleChange}
           />
-        </label>
-        <br />
-        <button type="submit">Utwórz wydarzenie</button>
+        <button className="form--submit" type="submit">Create Event</button>
       </form>
     </div>
   );
