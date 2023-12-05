@@ -23,6 +23,7 @@ export default function Layout() {
                     <a href="/CreateEvent" target="_blank">Create Event</a>
                     <a href="/Events" target="_blank">Events</a>
                     <a href="/Categories" target="_blank">Categories</a>
+                    <a href="/CreateCategory" target="_blank">Create Category</a>
                     <a href="/Table" target="_blank">Table</a>
                     {/* <a href="https://codepen.io/jo_Geek/" target="_blank">Codepen</a>
                     <a href="https://jsfiddle.net/user/jo_Geek/" target="_blank">JsFiddle</a> */}

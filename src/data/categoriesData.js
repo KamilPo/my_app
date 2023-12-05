@@ -2,12 +2,12 @@ export default {
     "data": {
         "categories":[
         {
-            "id": "1",
+            "id": 1,
             "name": "Urodziny",
             "color": "#ff0000"
         },
         {
-            "id": "2",
+            "id": 2,
             "name": "Imieniny",
             "color": "#0000ff"
         },

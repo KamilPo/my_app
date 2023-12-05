@@ -5,6 +5,7 @@ import Layout from "./pages/Layout"
 import './App.css';
 import CreateEvent from './pages/CreateEvent';
 import Categories from './pages/Categories';
+import CreateCategory from './pages/CreateCategory';
 
 function App() {
   return ( 
@@ -17,6 +18,7 @@ function App() {
         <Route path={"/createEvent"} element={<CreateEvent/>}></Route>
         <Route path={"/categories"} element={<Categories/>}></Route>
         <Route path={"/categories/:id"} element={<h1>kategorie id</h1>}></Route>
+        <Route path={"/createCategory"} element={<CreateCategory/>}></Route>
         <Route path={"/table"} element={<h1>table</h1>}></Route>
       </Route>
     </Routes>
