@@ -1,5 +1,6 @@
 import React from "react"
 import { Outlet } from "react-router"
+import { Link } from "react-router-dom";
 
 export default function Layout() {
     return(
@@ -20,8 +21,8 @@ export default function Layout() {
                 </div>
                 
                 <div class="nav-links">
-                    <a href="/CreateEvent" target="_blank">Create Event</a>
-                    <a href="/Events" target="_blank">Events</a>
+                    <Link to={"/CreateEvent"} target="_blank">Create Event</Link>
+                    <Link to={`/Events`} target="_blank">Events</Link>
                     <a href="/Categories" target="_blank">Categories</a>
                     <a href="/CreateCategory" target="_blank">Create Category</a>
                     <a href="/Table" target="_blank">Table</a>
