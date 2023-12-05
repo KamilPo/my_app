@@ -27,22 +27,25 @@ export default function Event(){
     };
 
     return (
-        <div>
-          <h1>Szczegóły wydarzenia</h1>
-          <div>
-            <strong>Data:</strong> {event.startDate}
+        <>
+        <div className="event-container">
+        <h1>Event details</h1>
+          <div className="event">
+            <div className="event--title">
+              {event.title}
+            </div>
+            <div className="event--strong">
+              <text>Start date:</text> {event.startDate}
+            </div>
+            <div >
+              <img src={event.url} alt={event.title} className="event--img" />
+            </div>
+            <div className="event--strong">
+              <text >Description:</text> {event.description}
+            </div>
+            <button className="event--deletebutton" onClick={handleDelete}>Delete</button>
           </div>
-          <div>
-            <strong>Tytuł:</strong> {event.title}
-          </div>
-          <div>
-            <strong>Opis:</strong> {event.description}
-          </div>
-          <div>
-            <strong>Zdjęcie:</strong>{" "}
-            <img src={event.url} alt={event.title} width="100px" height="100px" />
-          </div>
-          <button onClick={handleDelete}>Usuń</button>
         </div>
+        </>
       );
     };

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import eventsData from "../data/eventsData.js";
 import { Link } from "react-router-dom";
-// import CreateEvent from "/CreateEvent.js"
 
 export default function Events() {
   const [allEvents, setAllEvents] = useState(eventsData);
@@ -16,13 +15,15 @@ export default function Events() {
             <div className="date">{event.startDate}</div>
             </Link>
             <div className="title">{event.title}</div>
+            <div className="events--image-container">
             <img
               src={event.url}
-              className="event--image"
+              className="events--image"
               alt={event.title}
               width="100px"
               height="100px"
             />
+            </div>
             <div className="descr">{event.description}</div>
             
             

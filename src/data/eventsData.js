@@ -1,5 +1,4 @@
 export default {
-    "success": true,
     "data": {
         "events": [
             {
