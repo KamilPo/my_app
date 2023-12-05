@@ -21,10 +21,10 @@ function App() {
         <Route path={"/"} element={<h1>home</h1>}></Route>
         <Route path={"/events"} element={<Events events={events} categories={categories}/>}></Route>
         <Route path={"/events/:id"} element={<Event/>}></Route>
-        <Route path={"/createEvent"} element={<CreateEvent events={events} categories={categories}/>}></Route>
+        <Route path={"/createEvent"} element={<CreateEvent events={events} categories={categories} setEvents={setEvents}/>}></Route>
         <Route path={"/categories"} element={<Categories categories={categories}/>}></Route>
         <Route path={"/categories/:id"} element={<h1>kategorie id</h1>}></Route>
-        <Route path={"/createCategory"} element={<CreateCategory/>}></Route>
+        <Route path={"/createCategory"} element={<CreateCategory categories={categories}/>}></Route>
         <Route path={"/table"} element={<h1>table</h1>}></Route>
       </Route>
     </Routes>

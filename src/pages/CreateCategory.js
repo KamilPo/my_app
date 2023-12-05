@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import {useNavigate } from "react-router-dom";
 import categoriesData from "../data/categoriesData";
 
-export default function CreateCategory() {
+export default function CreateCategory(props) {
     const [newCategory, setNewCategory] = useState({
       name: "",
       color: "",
 })
 
     const navigate = useNavigate();
-    const newCategoryIndex = categoriesData.data.categories.length - 1;
+    const newCategoryIndex = props.categories.length - 1;
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,7 +25,7 @@ export default function CreateCategory() {
     const handleSubmit = (e) => {e.preventDefault();
 
     // Dodaj nowe wydarzenie do danych
-    categoriesData.data.categories.push(newCategory);
+    props.categories.push(newCategory);
 
     // Przekieruj do widoku szczegółów nowego wydarzenia
     

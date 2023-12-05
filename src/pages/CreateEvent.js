@@ -1,38 +1,66 @@
 import React, { useState } from "react";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateEvent(props) {
-    const [newEvent, setNewEvent] = useState({
-      title: "",
-      startDate: "",
-      endDate: "",
-      description: "",
-      url: "",
-})
+  const [newEvent, setNewEvent] = useState({
+    title: "",
+    startDate: "",
+    endDate: "",
+    description: "",
+    url: "",
+    categoryId: undefined
+  })
 
-    const navigate = useNavigate();
-    const evenstIds = props.events.map(event => event.id)
-    const newEventIndex = Math.max(...evenstIds) + 1
-    console.log(newEventIndex)
+  const navigate = useNavigate();
+  const evenstIds = props.events.map(event => event.id)
+  const newEventIndex = Math.max(...evenstIds) + 1
+  console.log(newEventIndex)
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setNewEvent((prevEvent) => ({
-        ...prevEvent,
-        id: newEventIndex,
-        [name]: value,
-        }));
-    };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewEvent((prevEvent) => ({
+      ...prevEvent,
+      id: newEventIndex,
+      [name]: value,
+    }));
+  };
 
-    console.log(newEvent)
+  console.log(newEvent)
 
-    const handleSubmit = (e) => {e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
     // Dodaj nowe wydarzenie do danych
-    props.events.push(newEvent);
+    // props.events.push(newEvent);
+    console.log(
+      {
+        "id": newEventIndex,
+        "title": newEvent.title,
+        "startDate": newEvent.startDate,
+        "endDate": newEvent.endDate,
+        "description": newEvent.description,
+        "url": newEvent.url,
+        "categoryId": newEvent.categoryId,
+      }
+    )
+    props.setEvents(prevState => {
+      return [
+        ...props.events,
+        {
+          "id": newEventIndex,
+          "title": newEvent.title,
+          "startDate": newEvent.startDate,
+          "endDate": newEvent.endDate,
+          "description": newEvent.description,
+          "url": newEvent.url,
+          "categoryId": newEvent.categoryId,
+        }
+      ]
+    }
+    )
 
     // Przekieruj do widoku szczegółów nowego wydarzenia
-    
+
     navigate('/events')
   };
 
@@ -40,14 +68,14 @@ export default function CreateEvent(props) {
     <div className="form-container">
       <h1>Create new event</h1>
       <form className="form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="title"
-            placeholder="Title"
-            className="form--input"
-            value={newEvent.title}
-            onChange={handleChange}
-          />
+        <input
+          type="text"
+          name="title"
+          placeholder="Title"
+          className="form--input"
+          value={newEvent.title}
+          onChange={handleChange}
+        />
         {/* <br /> */}
         <label className="form--label">
           Start Date
@@ -72,21 +100,29 @@ export default function CreateEvent(props) {
             onChange={handleChange}
           />
         </label>
-          <textarea
-            name="description"
-            placeholder="Description"
-            className="form--input"
-            value={newEvent.description}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="url"
-            placeholder="url do zdjęcia"
-            className="form--input"
-            value={newEvent.url}
-            onChange={handleChange}
-          />
+        <textarea
+          name="description"
+          placeholder="Description"
+          className="form--input"
+          value={newEvent.description}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="url"
+          placeholder="url do zdjęcia"
+          className="form--input"
+          value={newEvent.url}
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="categoryId"
+          placeholder="categoryId"
+          className="form--input"
+          value={newEvent.categoryId}
+          onChange={handleChange}
+        />
         <button className="form--submit" type="submit">Create Event</button>
       </form>
     </div>

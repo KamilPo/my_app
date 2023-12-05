@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import eventsData from "../data/eventsData.js";
 import { Link } from "react-router-dom";
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
 
 export default function Events(props) {
   const sortedEvents = props.events.sort(eventComparator)
@@ -19,30 +21,34 @@ export default function Events(props) {
     return category.name
   }
 
+  function getCategoryColor(categoryId) {
+    const category = props.categories.find(category => category.id == categoryId);
+    return category.color
+  }
+
+  const eventCards = sortedEvents.map(event => {
+    return (
+      <VerticalTimelineElement
+        className="vertical-timeline-element--work"
+        date={event.startDate + " -> " + event.endDate}
+        iconStyle={{ background: getCategoryColor(event.categoryId), color: '#fff' }}
+      >
+        <h3 className="vertical-timeline-element-title">{event.title}</h3>
+        <h4 className="vertical-timeline-element-subtitle">{getCategoryName(event.categoryId)}</h4>
+        <br/>
+        <img src={event.url} style={{width: "100px"}}></img>
+        <p>
+          {event.description}
+        </p>
+      </VerticalTimelineElement>
+    )
+  })
+
   return (
-    <>
-      <h1>Timeline</h1>
-      <ul>
-        {sortedEvents.map((event, index) => (
-          <li key={index} className={"accentA"}>
-            <Link className="link" to={`/Events/${index}`}>
-              <div className="date">{event.startDate}</div>
-            </Link>
-            <div className="title">{event.title}</div>
-            <div className="events--image-container">
-              <img
-                src={event.url}
-                className="events--image"
-                alt={event.title}
-                width="100px"
-                height="100px"
-              />
-            </div>
-            <div className="descr">{event.description}</div>
-            <h3>{getCategoryName(event.categoryId)}</h3>
-          </li>
-        ))}
-      </ul>
-    </>
-  );
+    <VerticalTimeline
+      // lineColor={{ color: 'rgb(200, 200, 200)' }}
+    >
+      {eventCards}
+    </VerticalTimeline>
+  )
 }
