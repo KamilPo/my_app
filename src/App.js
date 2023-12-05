@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Events from "./pages/Events"
 import Event from "./pages/Event"
