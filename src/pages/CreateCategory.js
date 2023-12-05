@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {useNavigate } from "react-router-dom";
-import categoriesData from "../data/categoriesData";
 
 export default function CreateCategory(props) {
     const [newCategory, setNewCategory] = useState({
@@ -9,25 +8,41 @@ export default function CreateCategory(props) {
 })
 
     const navigate = useNavigate();
-    const newCategoryIndex = props.categories.length - 1;
+    const categoryIds = props.categories.map(category => category.id)
+    const newCategoryIndex = Math.max(...categoryIds) + 1
+    console.log(newCategoryIndex)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setNewCategory((prevEvent) => ({
-        ...prevEvent,
+        setNewCategory((prevCategory) => ({
+        ...prevCategory,
         id: newCategoryIndex,
         [name]: value,
         }));
     };
 
-    // console.log(newCategory)
+    console.log({
+          "id": newCategoryIndex,
+          "name": newCategory.name,
+          "color": newCategory.color,
+        })
 
     const handleSubmit = (e) => {e.preventDefault();
 
     // Dodaj nowe wydarzenie do danych
-    props.categories.push(newCategory);
+    //props.categories.push(newCategory); //do wywalenia
 
-    // Przekieruj do widoku szczegółów nowego wydarzenia
+    setNewCategory(prevState =>{
+      return [
+        ...props.categories,
+        {
+          "id": newCategoryIndex,
+          "name": newCategory.name,
+          "color": newCategory.color,
+        }
+
+      ]
+    })
     
     navigate('/categories')
   };
