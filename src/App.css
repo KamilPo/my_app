@@ -10,7 +10,7 @@
 
 body {
     --color: rgba(30, 30, 30);
-    --bgColor: rgba(245, 245, 245);
+    --bgColor: rgb(245, 245, 245);
     min-height: 100vh;
     display: grid;
     align-content: center;
@@ -439,5 +439,49 @@ ul li .descr::before {
   border-radius: 3px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   padding: 10px;
+  margin-bottom: 20px;
+}
+
+/* .category--color {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+} */
+
+.category--color{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.categories--container {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.categories--card {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  height: 200px;
+  margin-left: 20px;
+  box-shadow: 5px 5px 5px 1px rgba(120,120,120,0.44);
+  -webkit-box-shadow: 5px 5px 5px 1px rgba(120,120,120,0.44);
+  -moz-box-shadow: 5px 5px 5px 1px rgba(120,120,120,0.44);
+}
+
+.categories--label{
   margin-bottom: 20px;
 }

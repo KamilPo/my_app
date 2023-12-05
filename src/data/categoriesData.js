@@ -3,12 +3,15 @@ export default {
         "categories":[
         {
             "id": "1",
-            "name": "Urodziny"
+            "name": "Urodziny",
+            "color": "#ff0000"
         },
         {
             "id": "2",
-            "name": "Imieniny"
-        }
+            "name": "Imieniny",
+            "color": "#0000ff"
+        },
+        
     ]
     }
 }

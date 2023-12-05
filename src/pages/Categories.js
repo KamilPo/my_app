@@ -7,25 +7,19 @@ export default function Categories() {
 
   return (
     <>
-      <h1>Categories</h1>
-      <ul>
-        {allCategories.data.categories.map((category, index) => (
-          <li key={index} className={"accentA"}>
-            <Link className="link" to={`/Categories/${index}`}>
-            <div className="date">{category.name}</div>
-            </Link>
-            <div className="events--image-container">
-            <img
-              src={category.url}
-              className="events--image"
-              alt={category.title}
-              width="100px"
-              height="100px"
-            />
-            </div>            
-          </li>
-        ))}
-      </ul>
+        <h1 className="categories--label">Categories</h1>
+            <div className="categories--container">
+                {allCategories.data.categories.map((category, index) => (
+                <article key={index} className={"categories--card"}>
+                    <Link className="link" to={`/Categories/${index}`}>
+                    <div className="card--name">{category.name}</div>
+                    </Link>
+                    
+                    <span className="category--color" style={{backgroundColor: category.color}}></span>
+                               
+                </article>
+                ))}
+            </div>
     </>
   );
 }
