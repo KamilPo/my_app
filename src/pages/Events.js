@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import eventsData from "../data/eventsData.js";
 import { Link } from "react-router-dom";
 
-export default function Events() {
-  const [allEvents, setAllEvents] = useState(eventsData.data.events);
-  const sortedEvents = allEvents.sort(eventComparator)
+export default function Events(props) {
+  const sortedEvents = props.events.sort(eventComparator)
 
   function eventComparator(a, b) {
     if (a.startDate > b.startDate) {
@@ -13,6 +12,11 @@ export default function Events() {
       return -1
     }
     return 0
+  }
+
+  function getCategoryName(categoryId) {
+    const category = props.categories.find(category => category.id == categoryId);
+    return category.name
   }
 
   return (
@@ -35,8 +39,7 @@ export default function Events() {
               />
             </div>
             <div className="descr">{event.description}</div>
-
-
+            <h3>{getCategoryName(event.categoryId)}</h3>
           </li>
         ))}
       </ul>

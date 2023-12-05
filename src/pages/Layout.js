@@ -21,11 +21,11 @@ export default function Layout() {
                 </div>
                 
                 <div class="nav-links">
-                    <Link to={"/CreateEvent"} target="_blank">Create Event</Link>
-                    <Link to={`/Events`} target="_blank">Events</Link>
-                    <a href="/Categories" target="_blank">Categories</a>
-                    <a href="/CreateCategory" target="_blank">Create Category</a>
-                    <a href="/Table" target="_blank">Table</a>
+                    <Link to={"/createEvent"}>Create Event</Link>
+                    <Link to={"/events"}>Events</Link>
+                    <a href="/categories">Categories</a>
+                    <a href="/createCategory">Create Category</a>
+                    <a href="/table">Table</a>
                     {/* <a href="https://codepen.io/jo_Geek/" target="_blank">Codepen</a>
                     <a href="https://jsfiddle.net/user/jo_Geek/" target="_blank">JsFiddle</a> */}
                 </div>

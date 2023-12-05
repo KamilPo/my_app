@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import {useNavigate } from "react-router-dom";
-import eventsData from "../data/eventsData";
 
-export default function CreateEvent() {
+export default function CreateEvent(props) {
     const [newEvent, setNewEvent] = useState({
       title: "",
       startDate: "",
@@ -12,7 +11,9 @@ export default function CreateEvent() {
 })
 
     const navigate = useNavigate();
-    const newEventIndex = eventsData.data.events.length - 1;
+    const evenstIds = props.events.map(event => event.id)
+    const newEventIndex = Math.max(...evenstIds) + 1
+    console.log(newEventIndex)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -28,7 +29,7 @@ export default function CreateEvent() {
     const handleSubmit = (e) => {e.preventDefault();
 
     // Dodaj nowe wydarzenie do danych
-    eventsData.data.events.push(newEvent);
+    props.events.push(newEvent);
 
     // Przekieruj do widoku szczegółów nowego wydarzenia
     
