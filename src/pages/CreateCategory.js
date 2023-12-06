@@ -32,7 +32,7 @@ export default function CreateCategory(props) {
     // Dodaj nowe wydarzenie do danych
     //props.categories.push(newCategory); //do wywalenia
 
-    setNewCategory(prevState =>{
+    props.setCategories(prevState =>{
       return [
         ...props.categories,
         {

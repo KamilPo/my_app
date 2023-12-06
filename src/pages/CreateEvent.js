@@ -32,17 +32,17 @@ export default function CreateEvent(props) {
 
     // Dodaj nowe wydarzenie do danych
     // props.events.push(newEvent);
-    console.log(
-      {
-        "id": newEventIndex,
-        "title": newEvent.title,
-        "startDate": newEvent.startDate,
-        "endDate": newEvent.endDate,
-        "description": newEvent.description,
-        "url": newEvent.url,
-        "categoryId": newEvent.categoryId,
-      }
-    )
+    // console.log(
+    //   {
+    //     "id": newEventIndex,
+    //     "title": newEvent.title,
+    //     "startDate": newEvent.startDate,
+    //     "endDate": newEvent.endDate,
+    //     "description": newEvent.description,
+    //     "url": newEvent.url,
+    //     "categoryId": newEvent.categoryId,
+    //   }
+    // )
     props.setEvents(prevState => {
       return [
         ...props.events,
@@ -59,10 +59,14 @@ export default function CreateEvent(props) {
     }
     )
 
-    // Przekieruj do widoku szczegółów nowego wydarzenia
-
     navigate('/events')
   };
+
+  const allCategoriesSelect = props.categories.map(category =>
+    <option>
+      {category.name}
+    </option>
+    )
 
   return (
     <div className="form-container">
@@ -115,14 +119,23 @@ export default function CreateEvent(props) {
           value={newEvent.url}
           onChange={handleChange}
         />
-        <input
+        {/* <input
           type="number"
           name="categoryId"
           placeholder="categoryId"
           className="form--input"
           value={newEvent.categoryId}
           onChange={handleChange}
-        />
+        /> */}
+        <select 
+                id="categoryColor" 
+                value={newEvent.categoryId}
+                className="form--select"
+                onChange={handleChange}
+                name="categoryId"
+            >
+                {allCategoriesSelect}
+            </select>
         <button className="form--submit" type="submit">Create Event</button>
       </form>
     </div>

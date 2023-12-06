@@ -24,7 +24,7 @@ function App() {
         <Route path={"/createEvent"} element={<CreateEvent events={events} categories={categories} setEvents={setEvents}/>}></Route>
         <Route path={"/categories"} element={<Categories categories={categories}/>}></Route>
         <Route path={"/categories/:id"} element={<h1>kategorie id</h1>}></Route>
-        <Route path={"/createCategory"} element={<CreateCategory categories={categories}/>}></Route>
+        <Route path={"/createCategory"} element={<CreateCategory categories={categories} setCategories={setCategories}/>}></Route>
         <Route path={"/table"} element={<h1>table</h1>}></Route>
       </Route>
     </Routes>
