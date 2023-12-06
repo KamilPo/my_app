@@ -10,10 +10,32 @@ import { useLocalStorage } from './useLocalStorage';
 import eventsData from './data/eventsData';
 import categoriesData from './data/categoriesData';
 import Category from './pages/Category';
+import Table from './pages/Table';
 
 function App() {
   const [events, setEvents] = useLocalStorage("events", eventsData)
   const [categories, setCategories] = useLocalStorage("categories", categoriesData)
+
+  // function appCreateEvent(eventData) {
+  //   //todo change this nextEventId
+  //   console.log(eventData)
+  //   const eventId = Math.max.apply(Math, (events.map(id => id.id)))
+	// 	console.log(eventId)
+	// 	const newEventIndex = eventId + 1
+	// 	setEvents(prevState => {
+	// 		return [...prevState,
+	// 		{
+	// 			"id": newEventIndex,
+	// 			"startDate": eventData.startDate,
+	// 			"endDate": eventData.endDate,
+	// 			"title": eventData.title,
+	// 			"description": eventData.description,
+  //       "url": eventData.url,
+  //       "categoryId": eventData.categoryId
+	// 		}]
+	// 	}
+	// 	)
+	// }
 
   return ( 
   <BrowserRouter>
@@ -26,7 +48,7 @@ function App() {
         <Route path={"/categories"} element={<Categories categories={categories}/>}></Route>
         <Route path={"/categories/:id"} element={<Category events={events} categories={categories} setCategories={setCategories}/>}></Route>
         <Route path={"/createCategory"} element={<CreateCategory categories={categories} setCategories={setCategories}/>}></Route>
-        <Route path={"/table"} element={<h1>table</h1>}></Route>
+        <Route path={"/table"} element={<Table events={events} categories={categories}/>}></Route>
       </Route>
     </Routes>
   
