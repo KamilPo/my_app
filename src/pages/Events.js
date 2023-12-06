@@ -33,7 +33,7 @@ export default function Events(props) {
         date={event.startDate + " -> " + event.endDate}
         iconStyle={{ background: getCategoryColor(event.categoryId), color: '#fff' }}
       >
-        <h3 className="vertical-timeline-element-title">{event.title}</h3>
+        <Link to={"/events/" + event.id} className="vertical-timeline-element-title">{event.title}</Link>
         <h4 className="vertical-timeline-element-subtitle">{getCategoryName(event.categoryId)}</h4>
         <br/>
         <img src={event.url} style={{width: "100px"}}></img>
