@@ -32,17 +32,17 @@ export default function CreateEvent(props) {
 
     // Dodaj nowe wydarzenie do danych
     // props.events.push(newEvent);
-    // console.log(
-    //   {
-    //     "id": newEventIndex,
-    //     "title": newEvent.title,
-    //     "startDate": newEvent.startDate,
-    //     "endDate": newEvent.endDate,
-    //     "description": newEvent.description,
-    //     "url": newEvent.url,
-    //     "categoryId": newEvent.categoryId,
-    //   }
-    // )
+    console.log(
+      {
+        "id": newEventIndex,
+        "title": newEvent.title,
+        "startDate": newEvent.startDate,
+        "endDate": newEvent.endDate,
+        "description": newEvent.description,
+        "url": newEvent.url,
+        "categoryId": newEvent.categoryId,
+      }
+    )
     props.setEvents(prevState => {
       return [
         ...props.events,
@@ -58,14 +58,15 @@ export default function CreateEvent(props) {
       ]
     }
     )
-
     navigate('/events')
   };
 
   const allCategoriesSelect = props.categories.map(category =>
-    <option>
+    <option value={category.id} key={category.id}>
       {category.name}
+      
     </option>
+    
     )
 
   return (
@@ -128,7 +129,7 @@ export default function CreateEvent(props) {
           onChange={handleChange}
         /> */}
         <select 
-                id="categoryColor" 
+                // id="categoryColor" 
                 value={newEvent.categoryId}
                 className="form--select"
                 onChange={handleChange}
