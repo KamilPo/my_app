@@ -8,7 +8,7 @@ export default function CreateEvent(props) {
     endDate: "",
     description: "",
     url: "",
-    categoryId: undefined
+    categoryId: 1
   })
 
   const navigate = useNavigate();
@@ -120,16 +120,7 @@ export default function CreateEvent(props) {
           value={newEvent.url}
           onChange={handleChange}
         />
-        {/* <input
-          type="number"
-          name="categoryId"
-          placeholder="categoryId"
-          className="form--input"
-          value={newEvent.categoryId}
-          onChange={handleChange}
-        /> */}
         <select 
-                // id="categoryColor" 
                 value={newEvent.categoryId}
                 className="form--select"
                 onChange={handleChange}
