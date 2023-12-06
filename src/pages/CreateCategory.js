@@ -48,26 +48,51 @@ export default function CreateCategory(props) {
   };
 
   return (
-    <div className="form-container">
-      <h1>Create new category</h1>
-      <form className="form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Category name"
-            className="form--input"
-            value={newCategory.name}
-            onChange={handleChange}
-          />
-        <input
-            type={"color"}
-            name={"color"}
-            value={newCategory.color}
-            onChange={handleChange}
-            className={"form--color-input"}
-        />
-        <button className="form--submit" type="submit">Create Category</button>
-      </form>
+    <div className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <div className="card">
+            <div className="card-body">
+              <h1 className="card-title">Create New Category</h1>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <label htmlFor="name" className="form-label">
+                    Category Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    className="form-control"
+                    placeholder="Enter category name"
+                    value={newCategory.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="color" className="form-label">
+                    Category Color
+                  </label>
+                  <input
+                    type="color"
+                    id="color"
+                    name="color"
+                    className="form-control"
+                    style={{ height: "50px", width: "80px" }}
+                    value={newCategory.color}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <button type="submit" className="btn btn-primary">
+                  Create Category
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
