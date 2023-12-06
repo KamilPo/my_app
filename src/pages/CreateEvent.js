@@ -8,7 +8,7 @@ export default function CreateEvent(props) {
 		endDate: "",
 		description: "",
 		url: "",
-		categoryId: 1
+		categoryId: ""
 	})
 
 	const navigate = useNavigate();
