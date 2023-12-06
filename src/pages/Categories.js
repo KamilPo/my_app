@@ -10,7 +10,18 @@ export default function Categories(props) {
       <Link to={"/categories/" + category.id} style={{ textDecoration: 'none', color: 'inherit' }}>
         <div class="card-body">
           <h5 class="card-title">{category.name}</h5>
-          <p class="card-text">{ "color: " +  category.color }</p>
+          <div className="mb-3">
+            <text>Color:</text>
+            <div
+              style={{
+                width: "50px",
+                height: "50px",
+                backgroundColor: category.color,
+                borderRadius: "5px",
+                border: "1px solid #ccc",
+              }}
+            ></div>
+          </div>
         </div>
         </Link>
       </div>
