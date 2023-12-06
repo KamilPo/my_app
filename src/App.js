@@ -20,7 +20,7 @@ function App() {
       <Route element={<Layout/>}>
         <Route path={"/"} element={<h1>home</h1>}></Route>
         <Route path={"/events"} element={<Events events={events} categories={categories}/>}></Route>
-        <Route path={"/events/:id"} element={<Event events={events} categories={categories}/>}></Route>
+        <Route path={"/events/:id"} element={<Event events={events} categories={categories} setEvents={setEvents}/>}></Route>
         <Route path={"/createEvent"} element={<CreateEvent events={events} categories={categories} setEvents={setEvents}/>}></Route>
         <Route path={"/categories"} element={<Categories categories={categories}/>}></Route>
         <Route path={"/categories/:id"} element={<h1>kategorie id</h1>}></Route>

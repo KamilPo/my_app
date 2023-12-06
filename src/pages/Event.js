@@ -10,31 +10,35 @@ export default function Event(props) {
     return <div>Nie znaleziono wydarzenia</div>;
   }
 
-  // const handleDelete = () => {
-  //   const updatedEvents = props.events.filter((e) => e.id !== eventId);
-  //   props.setEvents(updatedEvents);
-  //   navigate('/events');
-  // };
+  const handleDelete = () => {
+    const updatedEvents = props.events.filter((e) => e.id !== parseInt(id, 10));
+    props.setEvents(updatedEvents);
+    navigate('/events');
+  };
 
   return (
-    <>
-      <div className="event-container">
-        <h1>Event details</h1>
-        <div className="event">
-          <div className="event--title">{event.title}</div>
-          <div className="event--strong">
-            <text>Start date:</text> {event.startDate}
-          </div>
-          <div>
-            <img src={event.url} alt={event.title} className="event--img" />
-          </div>
-          <div className="event--strong">
-            <text>Description:</text> {event.description}
-          </div>
-          {/* <button className="event--deletebutton" onClick={handleDelete}>Delete</button> */}
-          <Link to="/events">Back</Link>
+    <div className="container mt-5">
+      <Link to="/events" className="btn btn-primary mb-3">
+        Back
+      </Link>
+      <div className="card">
+        <div className="card-body">
+          <h1 className="card-title">{event.title}</h1>
+          <p className="card-text">
+            <strong>Start date:</strong> {event.startDate}
+          </p>
+          <img src={event.url} alt={event.title} className="img-fluid mb-3" />
+          <p className="card-text">
+            <strong>Description:</strong> {event.description}
+          </p>
+          <button
+            className="btn btn-danger me-2"
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
