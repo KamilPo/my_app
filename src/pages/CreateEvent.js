@@ -11,6 +11,8 @@ export default function CreateEvent(props) {
 		categoryId: ""
 	})
 
+	const [validationError, setValidationError] = useState("");
+
 	const navigate = useNavigate();
 	const evenstIds = props.events.map(event => event.id)
 	const newEventIndex = Math.max(...evenstIds) + 1
@@ -18,11 +20,27 @@ export default function CreateEvent(props) {
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
-		setNewEvent((prevEvent) => ({
-			...prevEvent,
-			id: newEventIndex,
-			[name]: value,
-		}));
+
+		if (name === "startDate" && newEvent.endDate && value > newEvent.endDate) {
+			setValidationError("Start date cannot be greater than end date");
+		  } else {
+			setValidationError("");
+		  }
+		// If changing the start date, ensure it's not greater than the end date
+		if (name === "startDate" && newEvent.endDate && value > newEvent.endDate) {
+			setNewEvent((prevEvent) => ({
+			  ...prevEvent,
+			  id: newEventIndex,
+			  endDate: value, // Set endDate to start date if start date is greater
+			  [name]: value
+			}));
+		  } else {
+			setNewEvent((prevEvent) => ({
+			  ...prevEvent,
+			  id: newEventIndex,
+			  [name]: value
+			}));
+		  }
 	};
 
 	console.log(newEvent)
@@ -30,8 +48,10 @@ export default function CreateEvent(props) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		// Dodaj nowe wydarzenie do danych
-		// props.events.push(newEvent);
+		if (newEvent.startDate > newEvent.endDate) {
+      setValidationError("Start date cannot be greater than end date");
+      return;
+    }
 		console.log(
 			{
 				"id": newEventIndex,
@@ -76,6 +96,11 @@ export default function CreateEvent(props) {
 					<div className="card">
 						<div className="card-body">
 							<h1 className="card-title">Create New Event</h1>
+							{validationError && (
+                			<div className="alert alert-danger" role="alert">
+                  			{validationError}
+                			</div>
+							)}
 							<form onSubmit={handleSubmit}>
 								<div className="mb-3">
 									<label htmlFor="title" className="form-label">
