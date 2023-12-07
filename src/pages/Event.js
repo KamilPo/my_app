@@ -2,8 +2,8 @@ import React from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
 export default function Event(props) {
-  const { id  } = useParams();
-  const event = props.events.find((event) => event.id == id );
+  const { id } = useParams();
+  const event = props.events.find((event) => event.id == id);
   const navigate = useNavigate();
 
   if (!event) {

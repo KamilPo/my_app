@@ -2,90 +2,83 @@ import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 export default function EditEvent(props) {
-  const { id } = useParams();
-  const navigate = useNavigate();
+	const { id } = useParams();
+	const navigate = useNavigate();
 
-  const existingEvent = props.events.find((event) => event.id == id);
+	const existingEvent = props.events.find((event) => event.id == id);
 
-  // Użyj efektu do ustawienia początkowego stanu na podstawie istniejącego wydarzenia
-  const [newEvent, setNewEvent] = useState({
-    	title: existingEvent.title,
-      startDate: existingEvent.startDate,
-      endDate: existingEvent.endDate,
-      description: existingEvent.description,
-      url: existingEvent.url,
-      categoryId: existingEvent.categoryId,
-  });
+	const [newEvent, setNewEvent] = useState({
+		title: existingEvent.title,
+		startDate: existingEvent.startDate,
+		endDate: existingEvent.endDate,
+		description: existingEvent.description,
+		url: existingEvent.url,
+		categoryId: existingEvent.categoryId,
+	});
 
-  const [validationError, setValidationError] = useState("");
+	const [validationError, setValidationError] = useState("");
 
-  // Wyszukaj istniejące wydarzenie na podstawie id
-  
-
-  // Jeśli nie znaleziono wydarzenia, możesz obsłużyć ten przypadek
-  if (!existingEvent) {
-    return <div>Event not found</div>;
-  }
+	if (!existingEvent) {
+		return <div>Event not found</div>;
+	}
 
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+	const handleChange = (e) => {
+		const { name, value } = e.target;
 
-    if (name === "startDate" && newEvent.endDate && value > newEvent.endDate) {
-      setValidationError("Start date cannot be greater than end date");
-    } else {
-      setValidationError("");
-    }
+		if (name === "startDate" && newEvent.endDate && value > newEvent.endDate) {
+			setValidationError("Start date cannot be greater than end date");
+		} else {
+			setValidationError("");
+		}
 
-    setNewEvent((prevEvent) => ({
-      ...prevEvent,
-      [name]: value,
-    }));
-  };
+		setNewEvent((prevEvent) => ({
+			...prevEvent,
+			[name]: value,
+		}));
+	};
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+	const handleSubmit = (e) => {
+		e.preventDefault();
 
-    if (newEvent.startDate > newEvent.endDate) {
-      setValidationError("Start date cannot be greater than end date");
-      return;
-    }
+		if (newEvent.startDate > newEvent.endDate) {
+			setValidationError("Start date cannot be greater than end date");
+			return;
+		}
 
-    // Znajdź indeks istniejącego wydarzenia w tablicy
-    const existingEventIndex = props.events.findIndex(
-      (event) => event.id == id
-    );
+		const existingEventIndex = props.events.findIndex(
+			(event) => event.id == id
+		);
 
-    // Zaktualizuj istniejące wydarzenie w tablicy
-    const updatedEvents = [...props.events];
-    updatedEvents[existingEventIndex] = {
-      ...existingEvent,
-      ...newEvent,
-    };
+		const updatedEvents = [...props.events];
+		updatedEvents[existingEventIndex] = {
+			...existingEvent,
+			...newEvent,
+		};
 
-    props.setEvents(updatedEvents);
-    navigate("/events");
-  };
+		props.setEvents(updatedEvents);
+		navigate("/events");
+	};
 
-  const allCategoriesSelect = props.categories.map((category) => (
-    <option value={category.id} key={category.id}>
-      {category.name}
-    </option>
-  ));
+	const allCategoriesSelect = props.categories.map((category) => (
+		<option value={category.id} key={category.id}>
+			{category.name}
+		</option>
+	));
 
-  return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card">
-            <div className="card-body">
-              <h1 className="card-title">Edit Event</h1>
-              {validationError && (
-                <div className="alert alert-danger" role="alert">
-                  {validationError}
-                </div>
-              )}
-              <form onSubmit={handleSubmit}>
+	return (
+		<div className="container mt-5">
+			<div className="row justify-content-center">
+				<div className="col-md-6">
+					<div className="card">
+						<div className="card-body">
+							<h1 className="card-title">Edit Event</h1>
+							{validationError && (
+								<div className="alert alert-danger" role="alert">
+									{validationError}
+								</div>
+							)}
+							<form onSubmit={handleSubmit}>
 								<div className="mb-3">
 									<label htmlFor="title" className="form-label">
 										Title
@@ -176,10 +169,10 @@ export default function EditEvent(props) {
 									Edit Event
 								</button>
 							</form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }

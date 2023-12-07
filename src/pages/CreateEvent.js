@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateEvent(props) {
-	
+
 	const [newEvent, setNewEvent] = useState({
 		title: "",
 		startDate: "",
@@ -23,33 +23,33 @@ export default function CreateEvent(props) {
 
 		if (name === "startDate" && newEvent.endDate && value > newEvent.endDate) {
 			setValidationError("Start date cannot be greater than end date");
-		  } else {
+		} else {
 			setValidationError("");
-		  }
-		
+		}
+
 		if (name === "startDate" && newEvent.endDate && value > newEvent.endDate) {
 			setNewEvent((prevEvent) => ({
-			  ...prevEvent,
-			  id: newEventIndex,
-			  endDate: value,
-			  [name]: value
+				...prevEvent,
+				id: newEventIndex,
+				endDate: value,
+				[name]: value
 			}));
-		  } else {
+		} else {
 			setNewEvent((prevEvent) => ({
-			  ...prevEvent,
-			  id: newEventIndex,
-			  [name]: value
+				...prevEvent,
+				id: newEventIndex,
+				[name]: value
 			}));
-		  }
+		}
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
 		if (newEvent.startDate > newEvent.endDate) {
-      setValidationError("Start date cannot be greater than end date");
-      return;
-    }
+			setValidationError("Start date cannot be greater than end date");
+			return;
+		}
 		props.setEvents(prevState => {
 			return [
 				...props.events,
@@ -84,9 +84,9 @@ export default function CreateEvent(props) {
 						<div className="card-body">
 							<h1 className="card-title">Create New Event</h1>
 							{validationError && (
-                			<div className="alert alert-danger" role="alert">
-                  			{validationError}
-                			</div>
+								<div className="alert alert-danger" role="alert">
+									{validationError}
+								</div>
 							)}
 							<form onSubmit={handleSubmit}>
 								<div className="mb-3">
