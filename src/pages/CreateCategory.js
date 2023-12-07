@@ -30,7 +30,6 @@ export default function CreateCategory(props) {
       return;
     }
 
-    // Dodaj nową kategorię do danych
     props.setCategories((prevState) => [
       ...prevState,
       {

@@ -26,12 +26,12 @@ export default function CreateEvent(props) {
 		  } else {
 			setValidationError("");
 		  }
-		// If changing the start date, ensure it's not greater than the end date
+		
 		if (name === "startDate" && newEvent.endDate && value > newEvent.endDate) {
 			setNewEvent((prevEvent) => ({
 			  ...prevEvent,
 			  id: newEventIndex,
-			  endDate: value, // Set endDate to start date if start date is greater
+			  endDate: value,
 			  [name]: value
 			}));
 		  } else {
@@ -50,17 +50,6 @@ export default function CreateEvent(props) {
       setValidationError("Start date cannot be greater than end date");
       return;
     }
-		console.log(
-			{
-				"id": newEventIndex,
-				"title": newEvent.title,
-				"startDate": newEvent.startDate,
-				"endDate": newEvent.endDate,
-				"description": newEvent.description,
-				"url": newEvent.url,
-				"categoryId": newEvent.categoryId,
-			}
-		)
 		props.setEvents(prevState => {
 			return [
 				...props.events,

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
 export default function Category(props) {
-  const { id  } = useParams();
-  const category = props.categories.find((category) => category.id == id );
+  const { id } = useParams();
+  const category = props.categories.find((category) => category.id == id);
   const [validationError, setValidationError] = useState("");
   const navigate = useNavigate();
 
@@ -12,7 +12,6 @@ export default function Category(props) {
   }
 
   const isCategoryUsed = () => {
-    // Sprawdź, czy kategoria jest używana w wydarzeniach
     return props.events.some((event) => event.categoryId == category.id);
   };
 
@@ -34,7 +33,7 @@ export default function Category(props) {
       {validationError && (
         <div className="alert alert-danger" role="alert">
           {validationError}
-          </div>
+        </div>
       )}
       <div className="card">
         <div className="card-body">
