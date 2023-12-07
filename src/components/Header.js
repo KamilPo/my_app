@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="/Events">Kamil Podwika</a>
+        <a class="navbar-brand" href="/">Kamil Podwika</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -13,7 +13,7 @@ export default function Header() {
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <Link class="nav-link" to={"/Events"}>Events</Link>
+              <Link class="nav-link" to={"/"}>Events</Link>
             </li>
             <li class="nav-item">
               <Link class="nav-link" to={"/CreateEvent"}>Create Event</Link>

@@ -13,12 +13,12 @@ export default function Event(props) {
   const handleDelete = () => {
     const updatedEvents = props.events.filter((e) => e.id !== parseInt(id, 10));
     props.setEvents(updatedEvents);
-    navigate('/events');
+    navigate('/');
   };
 
   return (
     <div className="container mt-5">
-      <Link to="/events" className="btn btn-primary mb-3">
+      <Link to="/" className="btn btn-primary mb-3">
         Back
       </Link>
       <div className="card">

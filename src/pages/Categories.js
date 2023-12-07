@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Categories(props) {
@@ -31,7 +31,7 @@ export default function Categories(props) {
 
   return (
     <div class="container mt-5">
-      <Link to="/events" className="btn btn-primary mb-3">
+      <Link to="/" className="btn btn-primary mb-3">
         Back
       </Link>
       <div class="row">

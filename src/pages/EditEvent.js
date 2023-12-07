@@ -57,7 +57,7 @@ export default function EditEvent(props) {
 		};
 
 		props.setEvents(updatedEvents);
-		navigate("/events");
+		navigate("/");
 	};
 
 	const allCategoriesSelect = props.categories.map((category) => (

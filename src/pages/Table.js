@@ -70,7 +70,7 @@ export default function Table(props) {
 
     return (
         <div className="container mt-5">
-            <Link to="/events" className="btn btn-primary mb-3">
+            <Link to="/" className="btn btn-primary mb-3">
                 Back
             </Link>
             <h1>Events Table</h1>

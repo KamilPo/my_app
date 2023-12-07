@@ -65,7 +65,7 @@ export default function CreateEvent(props) {
 			]
 		}
 		)
-		navigate('/events')
+		navigate('/')
 	};
 
 	const allCategoriesSelect = props.categories.map(category =>
