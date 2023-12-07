@@ -31,12 +31,17 @@ export default function Event(props) {
           <p className="card-text">
             <strong>Description:</strong> {event.description}
           </p>
-          <button
-            className="btn btn-danger me-2"
-            onClick={handleDelete}
-          >
-            Delete
-          </button>
+          <div className="d-flex">
+            <Link to={`/edit-event/${id}`} className="btn btn-primary me-2">
+              Edit
+            </Link>
+            <button
+              className="btn btn-danger"
+              onClick={handleDelete}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </div>
     </div>
