@@ -2,17 +2,16 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateCategory(props) {
-
-
   const [newCategory, setNewCategory] = useState({
     name: "",
     color: "",
-  })
+  });
+
+  const [validationError, setValidationError] = useState("");
 
   const navigate = useNavigate();
-  const categoryIds = props.categories.map(category => category.id)
-  const newCategoryIndex = Math.max(...categoryIds) + 1
-  console.log(newCategoryIndex)
+  const categoryIds = props.categories.map((category) => category.id);
+  const newCategoryIndex = Math.max(...categoryIds) + 1;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,31 +22,25 @@ export default function CreateCategory(props) {
     }));
   };
 
-  console.log({
-    "id": newCategoryIndex,
-    "name": newCategory.name,
-    "color": newCategory.color,
-  })
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Dodaj nowe wydarzenie do danych
-    //props.categories.push(newCategory); //do wywalenia
+    if (!newCategory.color) {
+      setValidationError("Please select a category color.");
+      return;
+    }
 
-    props.setCategories(prevState => {
-      return [
-        ...props.categories,
-        {
-          "id": newCategoryIndex,
-          "name": newCategory.name,
-          "color": newCategory.color,
-        }
+    // Dodaj nową kategorię do danych
+    props.setCategories((prevState) => [
+      ...prevState,
+      {
+        id: newCategoryIndex,
+        name: newCategory.name,
+        color: newCategory.color,
+      },
+    ]);
 
-      ]
-    })
-
-    navigate('/categories')
+    navigate("/categories");
   };
 
   return (
@@ -57,6 +50,11 @@ export default function CreateCategory(props) {
           <div className="card">
             <div className="card-body">
               <h1 className="card-title">Create New Category</h1>
+              {validationError && (
+                <div className="alert alert-danger" role="alert">
+                  {validationError}
+                </div>
+              )}
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label htmlFor="name" className="form-label">

@@ -17,7 +17,6 @@ export default function CreateEvent(props) {
 	const navigate = useNavigate();
 	const evenstIds = props.events.map(event => event.id)
 	const newEventIndex = Math.max(...evenstIds) + 1
-	console.log(newEventIndex)
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -43,8 +42,6 @@ export default function CreateEvent(props) {
 			}));
 		  }
 	};
-
-	console.log(newEvent)
 
 	const handleSubmit = (e) => {
 		e.preventDefault();

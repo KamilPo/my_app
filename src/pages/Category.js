@@ -13,7 +13,7 @@ export default function Category(props) {
 
   const isCategoryUsed = () => {
     // Sprawdź, czy kategoria jest używana w wydarzeniach
-    return props.events.some((event) => event.categoryId === category.id);
+    return props.events.some((event) => event.categoryId == category.id);
   };
 
   const handleDelete = () => {
