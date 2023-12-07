@@ -18,7 +18,7 @@ export default function Category(props) {
 
   const handleDelete = () => {
     if (isCategoryUsed()) {
-      setValidationError("Nie można usunąć kategorii, która jest używana w wydarzeniach.");
+      setValidationError("You cannot delete a category that is used in events.");
     } else {
       const updatedCategories = props.categories.filter((e) => e.id !== parseInt(id, 10));
       props.setCategories(updatedCategories);
