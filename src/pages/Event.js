@@ -32,7 +32,7 @@ export default function Event(props) {
             <strong>Description:</strong> {event.description}
           </p>
           <div className="d-flex">
-            <Link to={`/edit-event/${id}`} className="btn btn-primary me-2">
+            <Link to={`/editEvent/${id}`} className="btn btn-primary me-2">
               Edit
             </Link>
             <button

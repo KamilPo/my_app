@@ -11,6 +11,7 @@ import eventsData from './data/eventsData';
 import categoriesData from './data/categoriesData';
 import Category from './pages/Category';
 import Table from './pages/Table';
+import EditEvent from './pages/EditEvent';
 
 function App() {
   const [events, setEvents] = useLocalStorage("events", eventsData)
@@ -44,6 +45,7 @@ function App() {
         <Route path={"/"} element={<h1>home</h1>}></Route>
         <Route path={"/events"} element={<Events events={events} categories={categories}/>}></Route>
         <Route path={"/events/:id"} element={<Event events={events} categories={categories} setEvents={setEvents}/>}></Route>
+        <Route path={"/editEvent/:id"} element={<EditEvent events={events} categories={categories} setEvents={setEvents}/>}></Route>
         <Route path={"/createEvent"} element={<CreateEvent events={events} categories={categories} setEvents={setEvents}/>}></Route>
         <Route path={"/categories"} element={<Categories categories={categories}/>}></Route>
         <Route path={"/categories/:id"} element={<Category events={events} categories={categories} setCategories={setCategories}/>}></Route>

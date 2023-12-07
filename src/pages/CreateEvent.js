@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateEvent(props) {
+	
 	const [newEvent, setNewEvent] = useState({
 		title: "",
 		startDate: "",
