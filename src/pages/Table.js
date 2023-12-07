@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 export default function Table(props) {
     const [sortBy, setSortBy] = useState(""); // Kategoria, według której sortujemy
     const [sortOrder, setSortOrder] = useState("asc"); // Kolejność sortowania: asc (rosnąco) lub desc (malejąco)
-    // const [filterStartDate, setFilterStartDate] = useState(""); // Filtrowanie według startDate
-    // const [filterEndDate, setFilterEndDate] = useState(""); // Filtrowanie według endDate
 
     const handleSort = (category) => {
         if (category === sortBy) {
@@ -19,30 +17,47 @@ export default function Table(props) {
     };
 
     const [startDate, setStartDate] = React.useState("");
-    const [endDate, setEndDate] = React.useState(new Date().toJSON().slice(0, 10));
-    const events = props.events
+    const [endDate, setEndDate] = React.useState("");
+
+    const handleSortBy = (events, sortBy, sortOrder) => {
+        const sortedEvents = [...events];
+
+        sortedEvents.sort((a, b) => {
+            const valueA = a[sortBy];
+            const valueB = b[sortBy];
+
+            if (typeof valueA === "string") {
+                // Porównaj stringi niezależnie od wielkości liter
+                return sortOrder === "asc" ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
+            } else {
+                // Porównaj liczby
+                return sortOrder === "asc" ? valueA - valueB : valueB - valueA;
+            }
+        });
+
+        return sortedEvents;
+    };
+
+    const events = props.events;
     const filteredEvents = events
         .filter(event => event.startDate > startDate || !startDate)
-        .filter(event => event.endDate <= endDate || !endDate)
-        .map(event => {
-            return {
-                ...event
-            }
-        })
+        .filter(event => event.endDate <= endDate || !endDate);
+
+    const sortedEvents = handleSortBy(filteredEvents, sortBy, sortOrder);
 
     function handleChangeStartDate(event) {
-        event.preventDefault()
-        const { value } = event.target
-        setStartDate(value)
+        event.preventDefault();
+        const { value } = event.target;
+        setStartDate(value);
     }
 
     function handleChangeEndDate(event) {
-        event.preventDefault()
-        const { value } = event.target
-        setEndDate(value)
+        event.preventDefault();
+        const { value } = event.target;
+        setEndDate(value);
     }
 
-    const eventsCards = filteredEvents.map((event) => (
+    const eventsCards = sortedEvents.map((event) => (
         <tr key={event.id}>
             <th scope="row">{event.id}</th>
             <td>{event.title}</td>
@@ -60,9 +75,7 @@ export default function Table(props) {
             </Link>
             <h1>Events Table</h1>
             <div className="mb-3">
-                <label  className="form-label">
-                    Filter Start Date:
-                </label>
+                <label className="form-label">Filter Start Date:</label>
                 <input
                     type="date"
                     className="form-control"
@@ -71,9 +84,7 @@ export default function Table(props) {
                 />
             </div>
             <div className="mb-3">
-                <label  className="form-label">
-                    Filter End Date:
-                </label>
+                <label className="form-label">Filter End Date:</label>
                 <input
                     type="date"
                     className="form-control"
@@ -134,9 +145,7 @@ export default function Table(props) {
                         </th>
                     </tr>
                 </thead>
-                <tbody>
-                {eventsCards}
-                </tbody>
+                <tbody>{eventsCards}</tbody>
             </table>
         </div>
     );
