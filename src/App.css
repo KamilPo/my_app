@@ -1,15 +1,15 @@
-/* Add custom styles here if needed */
+
 body {
-  padding-top: 56px; /* Adjust based on your navbar height */
-  background-color: #f8f9fa; /* Optional background color */
+  padding-top: 56px; 
+  background-color: #f8f9fa; 
 }
 
 .footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #343a40; /* Footer background color */
-  color: #ffffff; /* Footer text color */
+  background-color: #343a40; 
+  color: #ffffff; 
   text-align: center;
   padding: 10px 0;
 }
