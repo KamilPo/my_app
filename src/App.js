@@ -42,7 +42,7 @@ function App() {
   <BrowserRouter>
     <Routes>
       <Route element={<Layout/>}>
-        <Route path={"/"} element={<h1>home</h1>}></Route>
+        <Route path={"/"} element={<Events events={events} categories={categories}/>}></Route>
         <Route path={"/events"} element={<Events events={events} categories={categories}/>}></Route>
         <Route path={"/events/:id"} element={<Event events={events} categories={categories} setEvents={setEvents}/>}></Route>
         <Route path={"/editEvent/:id"} element={<EditEvent events={events} categories={categories} setEvents={setEvents}/>}></Route>
