@@ -1,35 +1,56 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Header() {
+  const [isNavOpen, setNavOpen] = useState(false);
+
+  const handleNavToggle = () => {
+    setNavOpen(!isNavOpen);
+  };
+
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="/">Kamil Podwika</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+    <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+      <div className="container">
+        <Link className="navbar-brand" to="/" onClick={handleNavToggle}>
+          Kamil Podwika
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          onClick={handleNavToggle}
+        >
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <Link class="nav-link" to={"/"}>Events</Link>
+        <div className={`collapse navbar-collapse ${isNavOpen ? "show" : ""}`}>
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <Link className="nav-link" to={"/"} onClick={handleNavToggle}>
+                Events
+              </Link>
             </li>
-            <li class="nav-item">
-              <Link class="nav-link" to={"/CreateEvent"}>Create Event</Link>
+            <li className="nav-item">
+              <Link className="nav-link" to={"/CreateEvent"} onClick={handleNavToggle}>
+                Create Event
+              </Link>
             </li>
-            <li class="nav-item">
-              <Link class="nav-link" to={"/Categories"}>Categories</Link>
+            <li className="nav-item">
+              <Link className="nav-link" to={"/Categories"} onClick={handleNavToggle}>
+                Categories
+              </Link>
             </li>
-            <li class="nav-item">
-              <Link class="nav-link" to={"/CreateCategory"}>Create Category</Link>
+            <li className="nav-item">
+              <Link className="nav-link" to={"/CreateCategory"} onClick={handleNavToggle}>
+                Create Category
+              </Link>
             </li>
-            <li class="nav-item">
-              <Link class="nav-link" to={"/Table"}>Table</Link>
+            <li className="nav-item">
+              <Link className="nav-link" to={"/Table"} onClick={handleNavToggle}>
+                Table
+              </Link>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-  )
+  );
 }
