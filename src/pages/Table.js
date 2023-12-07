@@ -99,6 +99,7 @@ export default function Table(props) {
                             <button
                                 className="btn btn-link"
                                 onClick={() => handleSort("id")}
+                                style={{ textDecoration: 'none', color: 'inherit', fontWeight: 'bold' }}
                             >
                                 ID
                             </button>
@@ -107,6 +108,7 @@ export default function Table(props) {
                             <button
                                 className="btn btn-link"
                                 onClick={() => handleSort("title")}
+                                style={{ textDecoration: 'none', color: 'inherit', fontWeight: 'bold' }}
                             >
                                 Title
                             </button>
@@ -115,6 +117,7 @@ export default function Table(props) {
                             <button
                                 className="btn btn-link"
                                 onClick={() => handleSort("startDate")}
+                                style={{ textDecoration: 'none', color: 'inherit', fontWeight: 'bold' }}
                             >
                                 Start Date
                             </button>
@@ -123,6 +126,7 @@ export default function Table(props) {
                             <button
                                 className="btn btn-link"
                                 onClick={() => handleSort("endDate")}
+                                style={{ textDecoration: 'none', color: 'inherit', fontWeight: 'bold' }}
                             >
                                 End Date
                             </button>
@@ -131,6 +135,7 @@ export default function Table(props) {
                             <button
                                 className="btn btn-link"
                                 onClick={() => handleSort("description")}
+                                style={{ textDecoration: 'none', color: 'inherit', fontWeight: 'bold' }}
                             >
                                 Description
                             </button>
@@ -139,6 +144,7 @@ export default function Table(props) {
                             <button
                                 className="btn btn-link"
                                 onClick={() => handleSort("categoryId")}
+                                style={{ textDecoration: 'none', color: 'inherit', fontWeight: 'bold' }}
                             >
                                 Category ID
                             </button>
