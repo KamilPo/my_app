@@ -24,7 +24,7 @@ export default function Table(props) {
             const valueA = a[sortBy];
             const valueB = b[sortBy];
 
-            if (typeof valueA === "string") {
+            if (typeof valueA === "string" && typeof valueB === "string") {
                 return sortOrder === "asc" ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
             } else {
                 return sortOrder === "asc" ? valueA - valueB : valueB - valueA;
