@@ -2,15 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Table(props) {
-    const [sortBy, setSortBy] = useState(""); // Kategoria, według której sortujemy
-    const [sortOrder, setSortOrder] = useState("asc"); // Kolejność sortowania: asc (rosnąco) lub desc (malejąco)
+    const [sortBy, setSortBy] = useState(""); 
+    const [sortOrder, setSortOrder] = useState("asc"); 
 
     const handleSort = (category) => {
         if (category === sortBy) {
-            // Jeśli klikamy na tę samą kategorię, zmień kolejność sortowania
             setSortOrder(sortOrder === "asc" ? "desc" : "asc");
         } else {
-            // Jeśli klikamy na nową kategorię, ustaw ją jako kategorię sortowania i domyślnie w kolejności rosnącej
             setSortBy(category);
             setSortOrder("asc");
         }
@@ -27,10 +25,8 @@ export default function Table(props) {
             const valueB = b[sortBy];
 
             if (typeof valueA === "string") {
-                // Porównaj stringi niezależnie od wielkości liter
                 return sortOrder === "asc" ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
             } else {
-                // Porównaj liczby
                 return sortOrder === "asc" ? valueA - valueB : valueB - valueA;
             }
         });
