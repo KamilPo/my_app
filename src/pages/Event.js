@@ -7,7 +7,7 @@ export default function Event(props) {
   const navigate = useNavigate();
 
   if (!event) {
-    return <div>Nie znaleziono wydarzenia</div>;
+    return <div>Event not found</div>;
   }
 
   const handleDelete = () => {

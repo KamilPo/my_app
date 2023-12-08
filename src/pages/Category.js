@@ -8,7 +8,7 @@ export default function Category(props) {
   const navigate = useNavigate();
 
   if (!category) {
-    return <div>Nie znaleziono wydarzenia</div>;
+    return <div>Category not found</div>;
   }
 
   const isCategoryUsed = () => {
